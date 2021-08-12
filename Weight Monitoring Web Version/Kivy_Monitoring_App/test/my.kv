@@ -1,0 +1,43 @@
+#:kivy 1.0 
+<MyGrid>
+
+    background_color: 0, 0, 0, 0
+    #opacity: 0.5
+
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+    #variable name: ID
+    name: name #declare global variables
+    email: email 
+
+    GridLayout:
+        cols:1
+        size: root.width-200, root.height-200 #make the widget fit the screen and then minus a border from it
+        pos: 100, 100 #offset the position to compensate for the boarder
+
+        GridLayout: 
+            cols: 2
+
+            Label:
+                text: "Name: "
+
+            TextInput:
+                id: name
+                multiline:False
+
+            Label:
+                text: "email: "
+
+            TextInput:
+                id: email 
+                multiline: False
+
+        Button:
+            text: "submit"
+            on_press: root.btn() #if there was an event. ie button was pressed

@@ -1,0 +1,301 @@
+#:kivy 1.0
+
+WindowManager:
+    MainWindow:
+    BatchNumWindow:
+    BrewNameWindow:
+    TimeSelectWindow:
+    AnalysisWindow:
+
+<MainWindow>:
+    name: "main" #name of this window
+    #variable name: ID
+    brew_name : brew_name #global variable to be passed between the kv file and the py file
+
+    GridLayout:
+        #create grid layout for all textboxes. this will be inside the main layout for visual purposes
+        cols: 1 #the main layout for the page
+        #size: root.width-200, root.height-200 #make the widget fit the screen and then minus a border from it
+        #pos: 100, 100 #offset the position to compensate for the boarder
+
+        GridLayout:
+            cols : 2
+            
+            Label:
+                text: "Brew Name: "
+
+            Button:
+                id: brew_name
+                text: "Select Brew"
+                on_press: 
+                    root.presses_brew_name()
+                    app.root.current = "BrewName"
+                    root.manager.transition.direction = "left"
+        
+            Label:
+                text: "Batch Number: "
+
+            Button:
+                id: batch_num
+                text: "Select Batch Number"
+                on_press: 
+                    root.presses_batch_num()
+                    app.root.current = "BatchNum"
+                    root.manager.transition.direction = "left"
+
+            Label:
+                text: "Start and End Times"
+
+            Button:
+                id: start_end_date
+                text: "Select start and end date"
+                on_press: 
+                    app.root.current = "TimeSelector"
+                    root.manager.transition.direction = "left"
+
+    #add the start date and time section 
+
+        Button:
+            text: "Update"
+            font_size: 40
+            on_press: root.pressed_update()
+
+        Button:
+            text: "analyse"
+            font_size: 40
+            on_press: 
+                root.pressed_analyse() #think i need to activate the analyse window script
+            on_release:
+            #    root.pressed_analyse() #think i need to activate the analyse window script 
+                app.root.current = "Analysis" #if passw.text == "tim" else "main"
+                root.manager.transition.direction = "left"
+
+<BatchNumWindow>:
+    name: "BatchNum"
+
+    GridLayout:
+        id: Batch_num_layout
+        cols: 1
+
+        Button: #return button
+            text: "you are in the batch number screen Go back"
+            on_release: 
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+                
+
+<BrewNameWindow>:
+    name: "BrewName"
+
+    GridLayout:
+        id: Brew_name_layout
+        cols:1
+
+        Button:
+            text: "you are in the brew name screen. Go back"
+            on_release: 
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+<TimeSelectWindow>:
+    name: "TimeSelector"
+
+    input_start_day: input_start_day
+    input_start_month: input_start_month
+    input_start_year: input_start_year
+    input_start_minute: input_start_minute
+    input_start_hour: input_start_hour
+    input_end_day: input_end_day
+    input_end_month: input_end_month
+    input_end_year: input_end_year
+    input_end_minute: input_end_minute
+    input_end_hour: input_end_hour
+
+    GridLayout:
+        cols:1 
+        #size: root.width-200, root.height-200 #make the widget fit the screen and then minus a border from it
+        #pos: 100, 100 #offset the position to compensate for the boarder
+
+        GridLayout: #header 
+            cols: 5 
+            Label:
+                text: "Day "
+            Label:
+                text: "Month "
+            Label:
+                text: "Year "
+            Label:
+                text: "Hour "
+            Label:
+                text: "Minute "
+    ##################
+    ###### From ######
+    ##################
+        GridLayout: #increase buttons 
+            cols: 5
+            Button:
+                text: "increase Day"
+                on_press: root.IncreaseNum("input_start_day", "D", "S")
+            Button:
+                text: "increase Month"
+                on_press: root.IncreaseNum("input_start_month", "M", "S")
+            Button:
+                text: "increase Year"
+                on_press: root.IncreaseNum("input_start_year", "Y", "S")
+            Button:
+                text: "increase Hour"
+                on_press: root.IncreaseNum("input_start_hour", "H", "S")
+            Button:
+                text: "increase Minute"
+                on_press: root.IncreaseNum("input_start_minute", "Min", "S")
+        
+        GridLayout: # display selection
+            cols: 5
+            TextInput:
+                id: input_start_day
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_month
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_year
+                text: "2020"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_hour
+                text: "9"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_minute
+                text: "00"
+                multiline: False
+                input_filter: "int"
+        
+        GridLayout: #decrease button
+            cols: 5
+            Button:
+                text: "Decrease Day"
+                on_press: root.DecreaseNum("input_start_day", "D", "S")
+            Button:
+                text: "Decrease Month"
+                on_press: root.DecreaseNum("input_start_month", "M", "S")
+            Button:
+                text: "Decrease Year"
+                on_press: root.DecreaseNum("input_start_year", "Y", "S")
+            Button:
+                text: "Decrease Hour"
+                on_press: root.DecreaseNum("input_start_hour", "H", "S")
+            Button:
+                text: "Decrease Minute"
+                on_press: root.DecreaseNum("input_start_minute", "Min", "S")
+
+    ##################
+    ####### To #######
+    ##################
+        GridLayout: #increase buttons 
+            cols: 5
+            Button:
+                text: "increase Day"
+                on_press: root.IncreaseNum("input_end_day", "D", "E")
+            Button:
+                text: "increase Month"
+                on_press: root.IncreaseNum("input_end_month", "M", "E")
+            Button:
+                text: "increase Year"
+                on_press: root.IncreaseNum("input_end_year", "Y", "E")
+            Button:
+                text: "increase Hour"
+                on_press: root.IncreaseNum("input_end_hour", "H", "E")
+            Button:
+                text: "increase Minute"
+                on_press: root.IncreaseNum("input_end_minute", "Min", "E")
+        
+        GridLayout: # display selection
+            cols: 5
+            TextInput:
+                id: input_end_day
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_month
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_year
+                text: "2020"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_hour
+                text: "9"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_minute
+                text: "00"
+                multiline: False
+                input_filter: "int"
+        
+        GridLayout: #decrease button
+            cols: 5
+            Button:
+                text: "Decrease Day"
+                on_press: root.DecreaseNum("input_end_day", "D", "E")
+            Button:
+                text: "Decrease Month"
+                on_press: root.DecreaseNum("input_end_month", "M", "E")
+            Button:
+                text: "Decrease Year"
+                on_press: root.DecreaseNum("input_end_year", "Y", "E")
+            Button:
+                text: "Decrease Hour"
+                on_press: root.DecreaseNum("input_end_hour", "H", "E")
+            Button:
+                text: "Decrease Minute"
+                on_press: root.DecreaseNum("input_end_minute", "Min", "E")
+        Button:
+            text: "Submit Start & End Dates"
+            on_press:
+                root.Submit_datetimes()
+            on_release: 
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+<AnalysisWindow>:
+    name: "Analysis"
+    on_pre_enter: root.download_data()
+
+    graph_display : graph_display
+    #Graph_layout : Graph_layout
+
+    GridLayout:
+        id: Graph_layout
+        cols: 1
+        
+        Graph:
+            id: graph_display
+            #date_label_format:'%b'
+            #x_ticks_minor:5
+            x_tics_major:100
+            y_ticks_major:1
+            y_grid_label:True
+            x_grid_label:True
+            padding:5
+            x_grid:True
+            y_grid:True
+            #ylabel:'test'
+
+        Button:
+            text: "you are in the analysis screen. Go back"
+            on_release: 
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+                #root.test() #think i need to activate the analyse window script

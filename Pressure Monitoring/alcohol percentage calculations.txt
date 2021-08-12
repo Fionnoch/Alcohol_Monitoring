@@ -1,0 +1,28 @@
+max-min pressure: 3,845.52 - 3,433.5
+
+0.03845520bar - 0.03433500bar
+
+pressure difference: 1.03845520 - 1.03433500 = 0.0041202 bar
+
+highest steps: 4.1202 mbar / 0.012 mbar/steps = 343 steps 
+
+alcohol sg relationship: sg 5 = .8% al.
+
+formula: rho*g*h*sg/100000 : 1000*9.81*.35*sg/100000
+
+0.034335 - 0.034506675 = 0.000171675 bars = 0.171675 mbar 
+
+0.171675 mbar = .8% abv 
+
+step resolutions: 0.012 to 0.065 steps/mbar
+
+14.3 steps to 2.6 steps = .8% abv
+
+1 step = 0.057% or 0.308% abv
+
+step choice	: step resolutions per 0.8%	: steps/%
+0.065 		: 2.6 steps per 0.8%		: 3.25 steps/%
+0.042 		: 4.0875 steps per 0.8%		: 5.109375 
+0.027 		: 6.358 steps per 0.8%		: 7.9475
+0.018 		: 9.5375 steps per 0.8%		: 11.921875
+0.012 		: 14.30625 steps per 0.8%	: 17.8828125

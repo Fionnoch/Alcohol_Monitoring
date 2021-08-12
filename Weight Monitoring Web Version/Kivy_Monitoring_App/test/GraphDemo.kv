@@ -1,0 +1,27 @@
+#:kivy 1.0
+
+<RootWidget>:
+    name: "Graph_window"
+
+    graph_display:graph_display
+
+    GridLayout:
+        id: Graph_layout
+        cols: 1
+        
+        Graph:
+            id: graph_display
+            x_ticks_minor:5
+            x_tics_major:25
+            y_ticks_major:1
+            y_grid_label:True
+            x_grid_label:True
+            padding:5
+            x_grid:True
+            y_grid:True
+
+        Button: #return button
+            text: "this is a button"
+            on_release: 
+                app.root.current = "main"
+                root.manager.transition.direction = "right"

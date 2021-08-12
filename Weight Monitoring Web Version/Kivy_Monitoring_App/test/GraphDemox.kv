@@ -1,0 +1,35 @@
+#:kivy 1.0 
+#:import MeshLinePlot kivy.garden.graph.MeshLinePlot
+RootWidget:
+
+    g_test:g_test    
+    graph_test:graph_test
+
+    GridLayout:
+        cols:1
+        size: root.width-200, root.height-200 #make the widget fit the screen and then minus a border from it
+        pos: 100, 100 #offset the position to compensate for the boarder
+
+        Graph:
+            id: graph_test
+            #plot: MeshLinePlot
+            #xlabel:'X'
+            #ylabel:'Y'
+            #x_ticks_minor:5
+            #x_tics_major:25
+            #y_ticks_major:1
+            #y_grid_label:True
+            #x_grid_label:True
+            #padding:5
+            #x_grid:True
+            #y_grid:True
+            #xmin:-0
+            #xmax:100
+            #ymin:-1
+            #ymax:1
+            pos: 0, root.height / 6
+            size: root.width * 2 / 4 , root.height * 18 / 24
+
+        #Button:
+        #    text: "click button"
+        #    on_press: root.press_button()

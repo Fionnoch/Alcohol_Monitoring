@@ -1,0 +1,164 @@
+#:kivy 1.0
+<DateTimeSelector>
+
+    input_start_day: input_start_day
+    input_start_month: input_start_month
+    input_start_year: input_start_year
+    input_start_minute: input_start_minute
+    input_start_hour: input_start_hour
+    input_end_day: input_end_day
+    input_end_month: input_end_month
+    input_end_year: input_end_year
+    input_end_minute: input_end_minute
+    input_end_hour: input_end_hour
+
+    GridLayout:
+        cols:1 
+        size: root.width-200, root.height-200 #make the widget fit the screen and then minus a border from it
+        pos: 100, 100 #offset the position to compensate for the boarder
+
+        GridLayout: #header 
+            cols: 5 
+            Label:
+                text: "Day "
+            Label:
+                text: "Month "
+            Label:
+                text: "Year "
+            Label:
+                text: "Hour "
+            Label:
+                text: "Minute "
+##################
+###### From ######
+##################
+        GridLayout: #increase buttons 
+            cols: 5
+            Button:
+                text: "increase Day"
+                on_press: root.IncreaseNum("input_start_day", "D", "S")
+            Button:
+                text: "increase Month"
+                on_press: root.IncreaseNum("input_start_month", "M", "S")
+            Button:
+                text: "increase Year"
+                on_press: root.IncreaseNum("input_start_year", "Y", "S")
+            Button:
+                text: "increase Hour"
+                on_press: root.IncreaseNum("input_start_hour", "H", "S")
+            Button:
+                text: "increase Minute"
+                on_press: root.IncreaseNum("input_start_minute", "Min", "S")
+        
+        GridLayout: # display selection
+            cols: 5
+            TextInput:
+                id: input_start_day
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_month
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_year
+                text: "2020"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_hour
+                text: "9"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_start_minute
+                text: "00"
+                multiline: False
+                input_filter: "int"
+        
+        GridLayout: #decrease button
+            cols: 5
+            Button:
+                text: "Decrease Day"
+                on_press: root.DecreaseNum("input_start_day", "D", "S")
+            Button:
+                text: "Decrease Month"
+                on_press: root.DecreaseNum("input_start_month", "M", "S")
+            Button:
+                text: "Decrease Year"
+                on_press: root.DecreaseNum("input_start_year", "Y", "S")
+            Button:
+                text: "Decrease Hour"
+                on_press: root.DecreaseNum("input_start_hour", "H", "S")
+            Button:
+                text: "Decrease Minute"
+                on_press: root.DecreaseNum("input_start_minute", "Min", "S")
+
+##################
+####### To #######
+##################
+        GridLayout: #increase buttons 
+            cols: 5
+            Button:
+                text: "increase Day"
+                on_press: root.IncreaseNum("input_end_day", "D", "E")
+            Button:
+                text: "increase Month"
+                on_press: root.IncreaseNum("input_end_month", "M", "E")
+            Button:
+                text: "increase Year"
+                on_press: root.IncreaseNum("input_end_year", "Y", "E")
+            Button:
+                text: "increase Hour"
+                on_press: root.IncreaseNum("input_end_hour", "H", "E")
+            Button:
+                text: "increase Minute"
+                on_press: root.IncreaseNum("input_end_minute", "Min", "E")
+        
+        GridLayout: # display selection
+            cols: 5
+            TextInput:
+                id: input_end_day
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_month
+                text: "1"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_year
+                text: "2020"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_hour
+                text: "9"
+                multiline: False
+                input_filter: "int"
+            TextInput:
+                id: input_end_minute
+                text: "00"
+                multiline: False
+                input_filter: "int"
+        
+        GridLayout: #decrease button
+            cols: 5
+            Button:
+                text: "Decrease Day"
+                on_press: root.DecreaseNum("input_end_day", "D", "E")
+            Button:
+                text: "Decrease Month"
+                on_press: root.DecreaseNum("input_end_month", "M", "E")
+            Button:
+                text: "Decrease Year"
+                on_press: root.DecreaseNum("input_end_year", "Y", "E")
+            Button:
+                text: "Decrease Hour"
+                on_press: root.DecreaseNum("input_end_hour", "H", "E")
+            Button:
+                text: "Decrease Minute"
+                on_press: root.DecreaseNum("input_end_minute", "Min", "E")
