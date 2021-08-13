@@ -1,3 +1,4 @@
+from typing import Optional
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome import pins
@@ -34,6 +35,8 @@ CONFIG_SCHEMA = (
             cv.Required(CONF_DOUT_PIN): pins.gpio_input_pin_schema,
             cv.Required(CONF_CLK_PIN): pins.gpio_output_pin_schema,
             cv.Optional(CONF_GAIN, default=128): cv.enum(GAINS, int=True),
+            #cv.Optional(CONF_MEDIAN_NUMBER, default = 1): cv.enum(MEDIAN_NUMBER, int=True),
+            #cv.Optional(CONF_MEDIAN_LOOP_TIME, default = 50): cv.enum(MEDIAN_LOOP_TIME, int=True),
         }
     )
     .extend(cv.polling_component_schema("60s"))
@@ -50,3 +53,5 @@ async def to_code(config):
     sck_pin = await cg.gpio_pin_expression(config[CONF_CLK_PIN])
     cg.add(var.set_sck_pin(sck_pin))
     cg.add(var.set_gain(config[CONF_GAIN]))
+    
+    #cg.add(var.set_median(config))
