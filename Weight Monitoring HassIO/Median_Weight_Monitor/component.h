@@ -22,6 +22,8 @@ namespace esphome
             void set_dout_pin(GPIOPin *dout_pin) { dout_pin_ = dout_pin; }
             void set_sck_pin(GPIOPin *sck_pin) { sck_pin_ = sck_pin; }
             void set_gain(HX711Gain gain) { gain_ = gain; }
+            void set_median_num(Median_Num median ) { median_ = median; }
+            void set_median_time(Median_Loop_Time median_time) { median_time_ = median_time; }
 
             void setup() override;
             void dump_config() override;
@@ -34,6 +36,8 @@ namespace esphome
             GPIOPin *dout_pin_;
             GPIOPin *sck_pin_;
             HX711Gain gain_{HX711_GAIN_128};
+            Median_Num *median_;
+            Median_time *median_time_;
         };
 
     } // namespace hx711
