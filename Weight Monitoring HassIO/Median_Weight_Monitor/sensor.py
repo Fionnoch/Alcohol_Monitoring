@@ -26,7 +26,7 @@ GAINS = {
     64  : HX711Gain.HX711_GAIN_64,
 }
 
-CONFIG_SCHEMA = (
+CONFIG_SCHEMA = ( 
     sensor.sensor_schema(
         icon=ICON_SCALE,
         accuracy_decimals=0,
