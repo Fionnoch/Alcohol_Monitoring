@@ -16,11 +16,14 @@ HX711Sensor = hx711_ns.class_("HX711Sensor", sensor.Sensor, cg.PollingComponent)
 
 CONF_DOUT_PIN = "dout_pin"
 
+CONF_MEDIAN_NUMBER = "Num_of_Median_samples"
+CONF_MEDIAN_LOOP_TIME = "Time_between_samples"
+
 HX711Gain = hx711_ns.enum("HX711Gain")
 GAINS = {
-    128: HX711Gain.HX711_GAIN_128,
-    32: HX711Gain.HX711_GAIN_32,
-    64: HX711Gain.HX711_GAIN_64,
+    128 : HX711Gain.HX711_GAIN_128,
+    32  : HX711Gain.HX711_GAIN_32,
+    64  : HX711Gain.HX711_GAIN_64,
 }
 
 CONFIG_SCHEMA = (
@@ -35,8 +38,8 @@ CONFIG_SCHEMA = (
             cv.Required(CONF_DOUT_PIN): pins.gpio_input_pin_schema,
             cv.Required(CONF_CLK_PIN): pins.gpio_output_pin_schema,
             cv.Optional(CONF_GAIN, default=128): cv.enum(GAINS, int=True),
-            #cv.Optional(CONF_MEDIAN_NUMBER, default = 1): cv.enum(MEDIAN_NUMBER, int=True),
-            #cv.Optional(CONF_MEDIAN_LOOP_TIME, default = 50): cv.enum(MEDIAN_LOOP_TIME, int=True),
+            cv.Optional(CONF_MEDIAN_NUMBER, default = 1) : int, # cv.enum(MEDIAN_NUMBER, int=True), #
+            cv.Optional(CONF_MEDIAN_LOOP_TIME, default = 50): int, # cv.enum(MEDIAN_LOOP_TIME, int=True),
         }
     )
     .extend(cv.polling_component_schema("60s"))
